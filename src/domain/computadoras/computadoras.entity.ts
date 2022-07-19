@@ -47,6 +47,15 @@ export class Computadora {
   tipo: Tipo;
 
   @ApiProperty({
+    type: 'string',
+    maxLength: 10,
+  })
+  @Length(2)
+  @IsString()
+  @Column()
+  bp: string;
+
+  @ApiProperty({
     enum: Procesador,
   })
   @IsEnum(Procesador)

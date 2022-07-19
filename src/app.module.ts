@@ -9,6 +9,8 @@ import { AuthModule } from './domain/auth/auth.module';
 import { UserModule } from './domain/user/user.module';
 import { ComputadoraModule } from './domain/computadoras/computadoras.module';
 import { ComputadoraController } from './domain/computadoras/computadoras.controller';
+import { ColaboradoresController } from './domain/colaboradores/colaboradores.controller';
+import { ColaboradoresModule } from './domain/colaboradores/colaboradores.module';
 
 @Module({
   imports: [
@@ -31,6 +33,7 @@ import { ComputadoraController } from './domain/computadoras/computadoras.contro
     AuthModule,
     UserModule,
     ComputadoraModule,
+    ColaboradoresModule,
   ],
   controllers: [AppController, ],
   providers: [AppService, ],

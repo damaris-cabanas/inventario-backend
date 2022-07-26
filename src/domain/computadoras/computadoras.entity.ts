@@ -16,14 +16,14 @@ export class Computadora {
     type: 'string',
     maxLength: 10,
   })
-  @Length(5)
+  @Length(3)
   @IsString()
   @Column()
   usuario: string;
 
   @ApiProperty({
     type: 'string',
-    maxLength: 10,
+    maxLength: 20,
   })
   @Length(2)
   @IsString()
@@ -32,7 +32,7 @@ export class Computadora {
 
   @ApiProperty({
     type: 'string',
-    maxLength: 10,
+    maxLength: 20,
   })
   @Length(2)
   @IsString()
@@ -48,7 +48,7 @@ export class Computadora {
 
   @ApiProperty({
     type: 'string',
-    maxLength: 10,
+    maxLength: 20,
   })
   @Length(2)
   @IsString()

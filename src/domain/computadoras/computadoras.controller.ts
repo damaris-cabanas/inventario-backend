@@ -132,6 +132,7 @@ export class ComputadoraController {
   @ApiOkResponse({ status: 200, description: 'Retorna el registro eliminado.' })
   @ApiNotFoundResponse({ status: 404, description: 'Registro inexistente.' })
   @ApiBadRequestResponse({ status: 400, description: 'Argumento inválido.' })
+  
   // Eliminar registro
   async delete(@Param('id') id: number) {
     try {

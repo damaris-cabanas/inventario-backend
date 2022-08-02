@@ -11,6 +11,12 @@ import { ComputadoraModule } from './domain/computadoras/computadoras.module';
 import { ComputadoraController } from './domain/computadoras/computadoras.controller';
 import { ColaboradoresController } from './domain/colaboradores/colaboradores.controller';
 import { ColaboradoresModule } from './domain/colaboradores/colaboradores.module';
+import { TelefonoModule } from './domain/telefono/telefono.module';
+import { MonitorService } from './domain/monitor/monitor.service';
+import { MonitorModule } from './domain/monitor/monitor.module';
+import { UpsModule } from './domain/ups/ups.module';
+import { TecladoService } from './domain/teclado/teclado.service';
+import { TecladoModule } from './domain/teclado/teclado.module';
 
 @Module({
   imports: [
@@ -34,6 +40,10 @@ import { ColaboradoresModule } from './domain/colaboradores/colaboradores.module
     UserModule,
     ComputadoraModule,
     ColaboradoresModule,
+    TelefonoModule,
+    MonitorModule,
+    UpsModule,
+    TecladoModule,
   ],
   controllers: [AppController, ],
   providers: [AppService, ],

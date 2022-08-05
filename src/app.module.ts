@@ -17,6 +17,8 @@ import { MonitorModule } from './domain/monitor/monitor.module';
 import { UpsModule } from './domain/ups/ups.module';
 import { TecladoService } from './domain/teclado/teclado.service';
 import { TecladoModule } from './domain/teclado/teclado.module';
+import { NotebookController } from './domain/notebook/notebook.controller';
+import { NotebookModule } from './domain/notebook/notebook.module';
 
 @Module({
   imports: [
@@ -44,6 +46,7 @@ import { TecladoModule } from './domain/teclado/teclado.module';
     MonitorModule,
     UpsModule,
     TecladoModule,
+    NotebookModule,
   ],
   controllers: [AppController, ],
   providers: [AppService, ],

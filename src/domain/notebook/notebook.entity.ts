@@ -3,9 +3,10 @@ import { Entity, ManyToOne, JoinColumn } from 'typeorm';
 import { IsNotEmpty, IsString, Length, IsEnum } from 'class-validator';
 import { Status } from 'src/enums/status.enum';
 import { ApiProperty } from '@nestjs/swagger';
+import { Procesador } from 'src/enums/procesador.enum';
 
 @Entity()
-export class Teclado {
+export class Notebook {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -35,6 +36,13 @@ export class Teclado {
   @IsString()
   @Column()
   modelo: string;
+
+  @ApiProperty({
+    enum: Procesador,
+  })
+  @IsEnum(Procesador)
+  @Column()
+  procesador: Procesador;
 
   @ApiProperty({
     type: 'string',

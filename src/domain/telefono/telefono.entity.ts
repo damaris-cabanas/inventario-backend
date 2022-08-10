@@ -1,6 +1,6 @@
 import { Column, PrimaryGeneratedColumn } from 'typeorm';
 import { Entity, ManyToOne, JoinColumn } from 'typeorm';
-import { IsNotEmpty, IsString, Length, IsEnum } from 'class-validator';
+import { IsNotEmpty, IsString, Length, IsEnum, IsNumber } from 'class-validator';
 import { Status } from 'src/enums/status.enum';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -11,7 +11,7 @@ export class Telefono {
 
   @ApiProperty({
     type: 'string',
-    maxLength: 10,
+    maxLength: 20,
   })
   @Length(3)
   @IsString()
@@ -20,7 +20,7 @@ export class Telefono {
 
   @ApiProperty({
     type: 'string',
-    maxLength: 10,
+    maxLength: 30,
   })
   @Length(2)
   @IsString()
@@ -31,7 +31,6 @@ export class Telefono {
     type: 'string',
     maxLength: 20,
   })
-  @Length(2)
   @IsString()
   @Column()
   interno: string; 
@@ -40,7 +39,7 @@ export class Telefono {
     type: 'string',
     maxLength: 20,
   })
-  @Length(2)
+  @Length(1)
   @IsString()
   @Column()
   bp: string;

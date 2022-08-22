@@ -11,7 +11,7 @@ export class Telefono {
 
   @ApiProperty({
     type: 'string',
-    maxLength: 20,
+    maxLength: 30,
   })
   @Length(3)
   @IsString()

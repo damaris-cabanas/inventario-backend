@@ -11,7 +11,7 @@ export class Ups {
 
   @ApiProperty({
     type: 'string',
-    maxLength: 10,
+    maxLength: 30,
   })
   @Length(3)
   @IsString()
@@ -40,7 +40,7 @@ export class Ups {
     type: 'string',
     maxLength: 20,
   })
-  @Length(2)
+  @Length(1)
   @IsString()
   @Column()
   bp: string;

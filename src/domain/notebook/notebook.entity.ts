@@ -6,13 +6,13 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Procesador } from 'src/enums/procesador.enum';
 
 @Entity()
-export class Computadora {
+export class Notebook {
   @PrimaryGeneratedColumn()
   id: number;
 
   @ApiProperty({
     type: 'string',
-    maxLength: 30,
+    maxLength: 10,
   })
   @Length(3)
   @IsString()
@@ -37,22 +37,21 @@ export class Computadora {
   @Column()
   modelo: string;
 
-
-  @ApiProperty({
-    type: 'string',
-    maxLength: 20,
-  })
-  @Length(1)
-  @IsString()
-  @Column()
-  bp: string;
-
   @ApiProperty({
     enum: Procesador,
   })
   @IsEnum(Procesador)
   @Column()
   procesador: Procesador;
+
+  @ApiProperty({
+    type: 'string',
+    maxLength: 20,
+  })
+  @Length(2)
+  @IsString()
+  @Column()
+  bp: string;
 
   @ApiProperty({
     enum: Status,

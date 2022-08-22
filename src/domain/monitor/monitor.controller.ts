@@ -1,16 +1,13 @@
-import { Body, Controller, Delete, NotFoundException } from '@nestjs/common';
-import { Param, ParseIntPipe, Post, Put, Get } from '@nestjs/common';
-import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { ApiNotFoundResponse, ApiCreatedResponse } from '@nestjs/swagger';
-import { ApiBadRequestResponse, ApiParam } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiTags } from '@nestjs/swagger';
 import { Status } from 'src/enums/status.enum';
-import { Computadora } from './computadoras.entity';
-import { ComputadoraService } from './computadoras.service';
+import { Monitor } from './monitor.entity';
+import { MonitorService } from './monitor.service';
 
-@ApiTags('Computadora')
-@Controller('api/v1/computadora')
-export class ComputadoraController {
-  constructor(private readonly service: ComputadoraService<Computadora>) {}
+@ApiTags('Monitor')
+@Controller('api/v1/monitor')
+export class MonitorController {
+  constructor(private readonly service: MonitorService<Monitor>) {}
 
   @Get()
   @ApiNotFoundResponse({
@@ -83,7 +80,7 @@ export class ComputadoraController {
   }
 
   @Post()
-  @ApiBody({ type: Computadora, required: true })
+  @ApiBody({ type: Monitor, required: true })
   @ApiCreatedResponse({
     status: 201,
     description: 'Retorna el registro insertado.',
@@ -93,7 +90,7 @@ export class ComputadoraController {
     description: 'Argumentos inválidos.',
   })
   // Insertar registro
-  async create(@Body() dto: Computadora) {
+  async create(@Body() dto: Monitor) {
     try {
       const data = await this.service.create(dto);
       return { ok: true, message: 'Registro insertado', data };
@@ -104,7 +101,7 @@ export class ComputadoraController {
   }
 
   @Put(':id')
-  @ApiBody({ type: Computadora, required: true })
+  @ApiBody({ type: Monitor, required: true })
   @ApiParam({ name: 'id', required: true, type: Number })
   @ApiNotFoundResponse({ status: 404, description: 'Registro inexistente' })
   @ApiBadRequestResponse({ status: 400, description: 'Argumentos inválidos' })
@@ -113,7 +110,7 @@ export class ComputadoraController {
     description: 'Retorna el registro actualizado',
   })
   // Actualizar registro
-  async edit(@Param('id', ParseIntPipe) id: number, @Body() dto: Computadora) {
+  async edit(@Param('id', ParseIntPipe) id: number, @Body() dto: Monitor) {
     try {
       let data: any = await this.service.edit(id, dto);
       return {

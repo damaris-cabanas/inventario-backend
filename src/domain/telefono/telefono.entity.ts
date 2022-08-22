@@ -1,12 +1,11 @@
 import { Column, PrimaryGeneratedColumn } from 'typeorm';
 import { Entity, ManyToOne, JoinColumn } from 'typeorm';
-import { IsNotEmpty, IsString, Length, IsEnum } from 'class-validator';
+import { IsNotEmpty, IsString, Length, IsEnum, IsNumber } from 'class-validator';
 import { Status } from 'src/enums/status.enum';
 import { ApiProperty } from '@nestjs/swagger';
-import { Procesador } from 'src/enums/procesador.enum';
 
 @Entity()
-export class Computadora {
+export class Telefono {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,7 +20,7 @@ export class Computadora {
 
   @ApiProperty({
     type: 'string',
-    maxLength: 20,
+    maxLength: 30,
   })
   @Length(2)
   @IsString()
@@ -32,11 +31,9 @@ export class Computadora {
     type: 'string',
     maxLength: 20,
   })
-  @Length(2)
   @IsString()
   @Column()
-  modelo: string;
-
+  interno: string; 
 
   @ApiProperty({
     type: 'string',
@@ -46,13 +43,6 @@ export class Computadora {
   @IsString()
   @Column()
   bp: string;
-
-  @ApiProperty({
-    enum: Procesador,
-  })
-  @IsEnum(Procesador)
-  @Column()
-  procesador: Procesador;
 
   @ApiProperty({
     enum: Status,

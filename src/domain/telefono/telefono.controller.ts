@@ -4,13 +4,14 @@ import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ApiNotFoundResponse, ApiCreatedResponse } from '@nestjs/swagger';
 import { ApiBadRequestResponse, ApiParam } from '@nestjs/swagger';
 import { Status } from 'src/enums/status.enum';
-import { Computadora } from './computadoras.entity';
-import { ComputadoraService } from './computadoras.service';
+import { Computadora } from '../computadoras/computadoras.entity';
+import { Telefono } from './telefono.entity';
+import { TelefonoService } from './telefono.service';
 
-@ApiTags('Computadora')
-@Controller('api/v1/computadora')
-export class ComputadoraController {
-  constructor(private readonly service: ComputadoraService<Computadora>) {}
+@ApiTags('Telefono')
+@Controller('api/v1/telefono')
+export class TelefonoController {
+  constructor(private readonly service: TelefonoService<Telefono>) {}
 
   @Get()
   @ApiNotFoundResponse({
@@ -83,7 +84,7 @@ export class ComputadoraController {
   }
 
   @Post()
-  @ApiBody({ type: Computadora, required: true })
+  @ApiBody({ type: Telefono, required: true })
   @ApiCreatedResponse({
     status: 201,
     description: 'Retorna el registro insertado.',
@@ -93,7 +94,7 @@ export class ComputadoraController {
     description: 'Argumentos inválidos.',
   })
   // Insertar registro
-  async create(@Body() dto: Computadora) {
+  async create(@Body() dto: Telefono) {
     try {
       const data = await this.service.create(dto);
       return { ok: true, message: 'Registro insertado', data };
@@ -104,7 +105,7 @@ export class ComputadoraController {
   }
 
   @Put(':id')
-  @ApiBody({ type: Computadora, required: true })
+  @ApiBody({ type: Telefono, required: true })
   @ApiParam({ name: 'id', required: true, type: Number })
   @ApiNotFoundResponse({ status: 404, description: 'Registro inexistente' })
   @ApiBadRequestResponse({ status: 400, description: 'Argumentos inválidos' })
@@ -113,7 +114,7 @@ export class ComputadoraController {
     description: 'Retorna el registro actualizado',
   })
   // Actualizar registro
-  async edit(@Param('id', ParseIntPipe) id: number, @Body() dto: Computadora) {
+  async edit(@Param('id', ParseIntPipe) id: number, @Body() dto: Telefono) {
     try {
       let data: any = await this.service.edit(id, dto);
       return {

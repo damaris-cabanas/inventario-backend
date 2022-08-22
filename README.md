@@ -5,7 +5,6 @@
 # Task
 
 # CRUD REST API con Nest JS, Postgres y Typescript
-- Este es un proyecto desafío para los pasantes universitarios.
 
 ## Software Requerido
 - NodeJS

@@ -8,7 +8,7 @@ import { Colaboradores } from './colaboradores.entity';
 import { ColaboradoresService } from './colaboradores.service';
 
 @ApiTags('Colaboradores')
-@Controller('api/v1/colaboradores')
+@Controller('api/v1/colaborador')
 export class ColaboradoresController {
   constructor(private readonly service: ColaboradoresService<Colaboradores>) {}
 

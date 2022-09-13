@@ -21,6 +21,14 @@ export class Computadora {
 
   @ApiProperty({
     type: 'string',
+    maxLength: 30,
+  })
+  @IsString()
+  @Column()
+  userOld: string;
+
+  @ApiProperty({
+    type: 'string',
     maxLength: 20,
   })
   @Length(2)
@@ -36,7 +44,6 @@ export class Computadora {
   @IsString()
   @Column()
   modelo: string;
-
 
   @ApiProperty({
     type: 'string',

@@ -22,6 +22,14 @@ export class Telefono {
     type: 'string',
     maxLength: 30,
   })
+  @IsString()
+  @Column()
+  userOld: string;
+
+  @ApiProperty({
+    type: 'string',
+    maxLength: 30,
+  })
   @Length(2)
   @IsString()
   @Column()

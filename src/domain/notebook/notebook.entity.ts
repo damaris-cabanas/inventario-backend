@@ -21,6 +21,14 @@ export class Notebook {
 
   @ApiProperty({
     type: 'string',
+    maxLength: 30,
+  })
+  @IsString()
+  @Column()
+  userold: string;
+
+  @ApiProperty({
+    type: 'string',
     maxLength: 20,
   })
   @Length(2)

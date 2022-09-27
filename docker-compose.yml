@@ -12,11 +12,11 @@ services:
       POSTGRES_DB: soporte
       SECRET_KEY: soporte_secret_key
   
-  adminer:
-    container_name: adminer-stock
-    image: adminer
+  soporte:
+    container_name: soporte-patrimonio
+    image: soporte
     restart: always
     ports:
       - 8090:8080
 
-# run: docker-compose -f docker-compose.yml up -d --build
+# run: docker-compose -f docker-compose.yml up -d --buildl

@@ -3,6 +3,7 @@ import { Entity, ManyToOne, JoinColumn } from 'typeorm';
 import { IsNotEmpty, IsString, Length, IsEnum } from 'class-validator';
 import { Status } from 'src/enums/status.enum';
 import { ApiProperty } from '@nestjs/swagger';
+import { Responsabilidad } from 'src/enums/responsabilidad.enum';
 
 @Entity()
 export class Otros {
@@ -69,4 +70,10 @@ export class Otros {
   @Column()
   status: Status;
 
+  @ApiProperty({
+    enum: Responsabilidad,
+  })
+  @IsEnum(Responsabilidad)
+  @Column()
+  responsabilidad: Responsabilidad;
 }

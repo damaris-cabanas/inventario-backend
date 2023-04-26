@@ -1,4 +1,4 @@
 export const jwtConstants = {
-    secret: 'soporte_secret_key',   
+    secret: 'inventario_secret_key',   
   };
   

@@ -1,5 +1,6 @@
 export enum Status {
-  ACTIVO = 'Activo',
-  INACTIVO = 'Inactivo',
-  DEBAJA = 'De baja'
+  OK = 'OK',
+  REPARACION = 'REP',
+  AVERIADO = 'AVE',
+  MANTENIMIENTO = 'MAN'
 }

@@ -135,7 +135,7 @@ export class OtrosController {
     try {
       const data: any = await this.service.getById(id);
 
-      await this.service.edit(id, { ...data, status: Status.INACTIVO });
+      await this.service.edit(id, { ...data, status: Status.AVERIADO });
       return { ok: true, data, message: 'Registro eliminado' };
     } catch (error) {
       console.error(error);

@@ -1,22 +1,50 @@
 version: '3.7'
 
 services:
-  db:
+  postgres:
+    container_name: postgres-container
     image: postgres
-    container_name: postgres-soporte
     restart: always
     ports:
-    - 5432:5432
+      - 5432:5432
     environment:
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: soporte
-      SECRET_KEY: soporte_secret_key
-  
-  soporte:
-    container_name: soporte-patrimonio
-    image: soporte
+      #      DATABASE_HOST: 127.0.0.1
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: inventario
+      POSTGRES_USER: postgres
+    networks:
+      - my-network
+
+  pgadmin:
+    container_name: pg-container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+    networks:
+      - my-network
+
+  node:
+    container_name: back-container
+    image: inventario-backend:1.8
     restart: always
     ports:
-      - 8090:8080
+      - 3050:3050
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=admin
+      - PGDATABASE=inventario
+    depends_on:
+      - postgres
+    networks:
+      - my-network
 
-# run: docker-compose -f docker-compose.yml up -d --buildl
+networks:
+  my-network:
+    external: true
+
+# run: docker-compose -f docker-compose.yml up -d --build

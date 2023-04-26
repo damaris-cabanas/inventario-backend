@@ -22,14 +22,12 @@ export class Deposito {
   })
   nombre: string;
 
-  @IsEnum(Status)
-  @IsOptional()
-  @Column({
-    type: 'varchar',
-    length: 1,
-    default: Status.ACTIVO,
+  @ApiProperty({
+    enum: Status,
   })
-  status?: Status;
+  @IsEnum(Status)
+  @Column()
+  status: Status;
 
   @OneToMany(() => Estante, (estante) => estante.deposito, {
     onDelete: 'CASCADE',

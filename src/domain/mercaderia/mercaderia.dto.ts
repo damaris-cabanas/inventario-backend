@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsInt, IsOptional, IsString, Length } from 'class-validator';
-import { Condicional } from 'src/enums/condicional.enum';
 import { Status } from 'src/enums/status.enum';
 import { PrimaryColumn } from 'typeorm';
 
@@ -40,10 +39,6 @@ export class MercaderiaDto {
   @IsOptional()
   @ApiProperty()
   codigo_barras: string;
-
-  @IsEnum(Condicional, { message: `Condicional invalida` })
-  @ApiProperty({ enum: Condicional })
-  controlaLoteMercaderia: Condicional;
 
   @IsString()
   @IsOptional()

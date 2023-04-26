@@ -1,5 +1,4 @@
 import { IsOptional } from 'class-validator';
-import { Condicional } from 'src/enums/condicional.enum';
 import { Status } from 'src/enums/status.enum';
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
@@ -28,9 +27,6 @@ export class Mercaderia {
 
   @Column({ nullable: true })
   codigo_barras: string;
-
-  @Column({ length: 1 })
-  controlaLoteMercaderia: Condicional;
 
   @Column()
   descripcion: string;

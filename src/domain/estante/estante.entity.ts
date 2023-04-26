@@ -1,9 +1,10 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Entity, ManyToOne, JoinColumn } from 'typeorm';
 import { IsNotEmpty, IsString, Length, IsEnum } from 'class-validator';
 import { Status } from 'src/enums/status.enum';
 import { Deposito } from '../deposito/deposito.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { Inventario } from '../inventario/inventario.entity';
 
 @Entity()
 export class Estante {
@@ -12,7 +13,7 @@ export class Estante {
 
   @ApiProperty({
     type: 'string',
-    maxLength: 5,
+    maxLength: 25,
   })
   @Length(5)
   @IsString()
@@ -31,6 +32,14 @@ export class Estante {
     onDelete: 'CASCADE',
   })
   @IsNotEmpty()
+  @ApiProperty({
+    type: 'number'
+  })
   @JoinColumn()
   deposito: Deposito;
+
+  @OneToMany(() => Inventario, (inventario) => inventario.estante, {
+    onDelete: 'CASCADE',
+  })
+  inventario: Inventario;
 }

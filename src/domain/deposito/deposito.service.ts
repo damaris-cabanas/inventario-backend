@@ -58,12 +58,12 @@ export class DepositoService<Deposito> extends GenericService<Deposito, Deposito
   }
 
   async getActivos(): Promise<Deposito[]> {
-    return await this.repository.find({ where: { status: Status.ACTIVO } });
+    return await this.repository.find({ where: { status: Status.OK } });
   }
 
   async getActivoById(id: number): Promise<Deposito> {
     return await this.repository.findOne(id, {
-      where: { status: Status.ACTIVO },
+      where: { status: Status.OK },
     });
   }
 }
